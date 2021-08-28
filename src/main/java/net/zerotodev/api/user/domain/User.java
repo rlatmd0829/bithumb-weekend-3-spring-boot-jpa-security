@@ -4,6 +4,7 @@ import lombok.Data;
 import net.zerotodev.api.order.domain.Order;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,16 +14,17 @@ public class User {
     @Id @Column(name = "user_id")
     private long userId;
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true, nullable = false)
     private String username;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
+    @Size(min=8, message = "8자리 이상 입력하시오")
     private String password;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
     @Column(name = "reg_date")
