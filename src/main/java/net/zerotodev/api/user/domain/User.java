@@ -29,4 +29,7 @@ public class User {
     private String regDate;
     @OneToMany(mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    public List<Role> roles;
 }

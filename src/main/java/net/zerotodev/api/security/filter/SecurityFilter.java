@@ -1,7 +1,7 @@
 package net.zerotodev.api.security.filter;
 
 import lombok.RequiredArgsConstructor;
-import net.zerotodev.api.security.config.SecurityProvider;
+import net.zerotodev.api.security.domain.SecurityProvider;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
