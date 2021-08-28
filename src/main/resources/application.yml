@@ -12,5 +12,11 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MariaDBDialect
 
+security:
+  jwt:
+    token:
+      security-key: secret-key
+      expiration-length: 3600000
+
 server:
   port: 8080
