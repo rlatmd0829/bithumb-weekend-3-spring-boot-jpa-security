@@ -13,7 +13,7 @@ import java.util.Optional;
 @Api(tags = "items") // swagger 문서작업용
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/itmes")
+@RequestMapping("/items")
 public class ItemController{
     private final ItemService itemService;
 
@@ -28,8 +28,8 @@ public class ItemController{
 
     @GetMapping
     public Item findById(@RequestParam("itemBrand") String itemBrand,
-                         @RequestParam("itemBrand") String itemName,
-                         @RequestParam("itemBrand") String itemColor) {
+                         @RequestParam("itemName") String itemName,
+                         @RequestParam("itemColor") String itemColor) {
         return new Item(itemBrand, itemName, itemColor);
         //return itemService.findById(id);
     }

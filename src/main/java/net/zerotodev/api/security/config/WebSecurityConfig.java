@@ -17,7 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 @Configuration // 이녀석은 뭘까
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter { // 프론트에서 넘어오는 시큐리티 설정
-    private final SecurityProvider provider; // provider는 토큰값을 제공하는 녀석, 시큐리티가 가지고있어야함
+    //private final SecurityProvider provider; // provider는 토큰값을 제공하는 녀석, 시큐리티가 가지고있어야함
 
     @Bean // configuration은 Bean 어노테이션으로 씀
     PasswordEncoder encoder(){return new BCryptPasswordEncoder();} // 비밀번호 암호화
@@ -45,6 +45,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter { // 프론�
                 .antMatchers("/h2-console/**/**").permitAll()
                 .anyRequest().authenticated();
         http.exceptionHandling().accessDeniedPage("/login");
-        http.apply(new SecurityConfig(provider));
+        //http.apply(new SecurityConfig(provider));
     }
 }
