@@ -1,24 +1,37 @@
 package net.zerotodev.api.item.controller;
 
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import net.zerotodev.api.item.domain.Item;
 import net.zerotodev.api.item.service.ItemService;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "*", allowCredentials = "false") // cors 이슈 처리, 전부허용해줌 , 로그인 된 상태 allowCredentials 이게 뭐지
+@Api(tags = "items") // swagger 문서작업용
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/itmes")
 public class ItemController{
     private final ItemService itemService;
+
+    @GetMapping("/connect")
+    public String connect(){
+        return "success";
+    }
 
     public List<Item> findAll() {
         return itemService.findAll();
     }
 
-    public Optional<Item> findById(long id) {
-        return itemService.findById(id);
+    @GetMapping
+    public Item findById(@RequestParam("itemBrand") String itemBrand,
+                         @RequestParam("itemBrand") String itemName,
+                         @RequestParam("itemBrand") String itemColor) {
+        return new Item(itemBrand, itemName, itemColor);
+        //return itemService.findById(id);
     }
 
     public boolean existsById(long id) {

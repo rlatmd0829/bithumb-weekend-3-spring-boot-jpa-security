@@ -1,5 +1,6 @@
 package net.zerotodev.api.item.domain;
 
+import lombok.Builder;
 import lombok.Data;
 import net.zerotodev.api.order.domain.Order;
 
@@ -34,4 +35,11 @@ public class Item {
 
     @OneToMany(mappedBy = "item")
     private List<Order> orders = new ArrayList<>();
+
+    @Builder
+    public Item(String itemBrand, String itemName, String itemColor){
+        this.itemBrand = itemBrand;
+        this.itemName = itemName;
+        this.itemColor = itemColor;
+    }
 }
